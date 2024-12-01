@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import Image from 'next/image'
 import NotFoundIcon from '@/assets/404.svg'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function NotFound() {
   return (

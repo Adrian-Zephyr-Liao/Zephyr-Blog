@@ -1,12 +1,16 @@
 import { auth, signIn, signOut } from '@/auth'
 import styles from './index.module.css'
+
 export default async function SignIn() {
   const session = await auth()
 
   if (session?.user) {
     return (
       <>
-        <div className={styles.a}>用户信息：{JSON.stringify(session.user)}</div>
+        <div className={styles.a}>
+          用户信息：
+          {JSON.stringify(session.user)}
+        </div>
         <div>
           <form
             action={async () => {
@@ -20,7 +24,8 @@ export default async function SignIn() {
         </div>
       </>
     )
-  } else {
+  }
+  else {
     return (
       <form
         action={async () => {
