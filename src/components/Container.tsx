@@ -14,8 +14,6 @@ export default function Container({ children, className, ...props }: ContainerPr
         'px-4 sm:px-6 lg:px-8',
         // 最大宽度限制
         'max-w-screen-xl',
-        // 内容间距
-        'py-20',
         className,
       )}
       {...props}

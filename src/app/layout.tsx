@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
-import Container from '@/components/Container'
 import Navigation from '@/components/Navigation'
 import { ThemeProvider } from '@/components/theme-provider'
 import ThemeSwitch from '@/components/ThemeSwitch'
+import { cn } from '@/lib/utils'
 import localFont from 'next/font/local'
+import React from 'react'
+import { Providers } from './providers'
 import './globals.css'
 
 const geistSans = localFont({
@@ -29,16 +31,35 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <Container>
-            <header className="flex items-center justify-between py-6">
-              <Navigation />
-              <ThemeSwitch />
-            </header>
+        <Providers>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <div className={cn(
+              'fixed top-0 left-0 right-0 z-50',
+              'backdrop-blur-sm',
+              'bg-white/30 dark:bg-gray-900/30',
+              'transition-[background-color] duration-300',
+              'supports-[backdrop-filter]:bg-white/20 supports-[backdrop-filter]:dark:bg-gray-900/20',
+            )}
+            >
+              <div className={cn(
+                'flex items-center justify-between',
+                'py-6',
+                'w-full max-w-screen-xl mx-auto',
+              )}
+              >
+                <div className="flex items-center justify-between w-full">
+                  <Navigation />
+                  <ThemeSwitch />
+                </div>
+              </div>
+            </div>
             <main>{children}</main>
-          </Container>
-        </ThemeProvider>
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   )

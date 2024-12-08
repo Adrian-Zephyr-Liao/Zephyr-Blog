@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import React from 'react'
+import { AuthDialog } from './AuthDialog'
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from './ui/navigation-menu'
 
 export default function Navigation() {
@@ -61,6 +62,7 @@ export default function Navigation() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
+        <AuthDialog />
       </NavigationMenuList>
     </NavigationMenu>
   )
